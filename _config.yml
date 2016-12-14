@@ -12,7 +12,7 @@ url: "https://youyue123.github.io"
 #
 # NB! Without this *nothing* will work, because it's used in every path :)
 
-baseurl: /youyue123.github.io
+#baseurl: /
 
 # Google tracking id
 
@@ -85,7 +85,7 @@ icon-192p: "/img/web-app/icon-192p.png"
 
 enable-gesture-navigation: True
 
-post-preview-words: 50
+post-preview-words: 96
 
 paginate: 5
 
