@@ -78,6 +78,33 @@ a {
     }
 }
 
+table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  font-size : 18px;
+  margin-bottom: 20px;
+}
+
+table th {
+  font-weight: bold;
+  text-align: center;
+}
+
+table th,
+table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+}
+//
+// table tr:nth-child(2n) {
+//   background-color: #f8f8f8;
+// }
+
 .navbar-custom {
     margin-bottom: 0;
     border-bottom: 1px solid rgba($font-color, 0.3);

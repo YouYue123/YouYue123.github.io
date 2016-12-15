@@ -31,9 +31,9 @@
               {% endfor %}
             </small>
           </h4>
-
-          {{ page.content | markdownify }}
-
+          <!-- <div class="markdown-body"> -->
+            {{ page.content | markdownify }}
+          <!-- </div> -->
           {% include share.html %}
 
           {% if jekyll.environment == "production" %}
