@@ -134,7 +134,7 @@ email: "youy0004123@gmail.com"
 # This works best when your author blurb image has a transparent background, or matches your site background color.
 
 # if the author_blurb is not set, then this feature is skipped
-author_blurb: "You Yue is an awesome person. He lives in Singapore, where he works in Blue Giant. In his spare time, John likes to drink ice lemon tea."
+author_blurb: "You Yue is an awesome person. He lives in Singapore, where he works in IBM. In his spare time, he likes to drink ice lemon tea."
 author_blurb_image: "/img/avatar.jpg"
 
 ##################
