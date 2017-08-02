@@ -8,7 +8,7 @@ tags: [ 'MVVM', 'iOS', 'Memory leak']
 
 ## 背景
 
-最近在做一个iOS项目，客户要求交付的时候测试覆盖率，可维护性。这让我想到了之前开发的时候View Controller非常难测试，而且到了项目后期庞大的数千行代码的View Controller非常难维护，即使是用了不同的extension来分割代码，由于基本上90%的逻辑都会写在VC中，导致代码非常混乱。 可测试和维护性有很多解决方案，[VIPER](https://objccn.io/issue-13-5/)，借鉴于Redux的[单向数据流动函数式](https://onevcat.com/2017/07/state-based-viewcontroller/)，MVVM等等。从对已有模式的兼容性和维护测试性的两个方面考虑，最终我们还是选择MVVM作为最后选择。
+最近在做一个iOS项目，客户要求交付的时候要有相对好的测试覆盖率，可维护性。这让我想到了之前开发的时候View Controller测试痛苦的经历，而且到了项目后期庞大的数千行代码的View Controller非常难维护，即使是用了不同的extension来分割代码，由于基本上90%的逻辑都会写在ViewController中，导致代码非常混乱。 通过改变MVC模式来达到更好的可测试和维护性有很多解决方案，比如[VIPER](https://objccn.io/issue-13-5/)，借鉴于Redux的[单向数据流动函数式](https://onevcat.com/2017/07/state-based-viewcontroller/)，MVVM等等。我从对已有模式的兼容性和维护测试性的两个方面考虑，选择了MVVM作为整个App的前端架构模式。
 
 ## MVC vs MVVM in iOS
 
@@ -26,20 +26,20 @@ tags: [ 'MVVM', 'iOS', 'Memory leak']
 
 # MVVM简介
 
-MVVM本质上是一种MVC的变种.，相当于把以前的VC拆分成View Controller和View Model两部分。 View Controller只关心View的信息比如IB Outlet，view的生命周期等等，View Model只关心现在的数据和状态信息。
+MVVM本质上是一种MVC的变种.，相当于把以前的VC拆分成View Controller和View Model两部分。 View Controller只关心View的信息比如IB Outlet，View的生命周期等等，View Model只关心现在的数据和状态信息。
 
-这样的改变会让代码很好被测试，利用Unit test很容易测试View Model的数据和状态信息，而Xcode的Automatic UI testing又可以很好的帮我们处理VC这一层的测试情况。而且由于我们只是分离了View Controller为两层，这不会对我们现有的代码有太多的侵入。如果想分离一些逻辑代码给其他团队复用的时候，这种方式很方便提取和移植代码。
+这样的改变会让代码很好被测试，利用Unit test很容易测试View Model的数据和状态信息，而Xcode的Automatic UI testing又可以很好的帮我们处理VC这一层的测试。而且由于我们只是分离了View Controller为两层，这也不会对我们现有的代码有太多的侵入。尤其是如果我们在分离一部分VM层的数据状态处理逻辑代码给其他团队复用的时候，这种方式极大地方便了提取和移植。
 
 # 总结
 
 总结一下MVVM相对MVC的三大优势:
-1. 可测试性的提高
-2. 方便代码的移植
-3. 现有MVC的兼容性很好
+1. 更好的可测试性
+2. 方便的代码移植
+3. 良好的MVC兼容性
 
 当然世界上没有绝对完美的东西，MVVM也有他自己的缺点：
 1. 学习成本高，尤其是团队里有新成员加入的时候，会比较难上手
-2. MVVM需要绑定机制来触发VM到VC的响应，iOS没有很好的绑定机制可以用，这也造成了我现在团队里的内存泄漏问题
+2. MVVM需要绑定机制来触发ViewModel到ViewController的响应，iOS没有很好的绑定机制可以用，这也造成了我现在团队里的内存泄漏问题
 3. 数据和网络相关的代码会使得VM这层变得很臃肿，大量的Async代码会让程序难维护，所以我们采用了DataManager layer和Async Await in Swift来解决这个问题
 
 
@@ -48,7 +48,7 @@ MVVM本质上是一种MVC的变种.，相当于把以前的VC拆分成View Contr
 我们团队在具体实现上面参照了IBM奥斯丁团队的[Bluepic项目](https://github.com/IBM/BluePic)，这个项目曾经在WWDC演讲过[Going Server-side with Swift Open Source](https://developer.apple.com/videos/play/wwdc2016/415/)。 其中也介绍了Swift在server side的可能性，值得一看哦。
 
 # 基本架构
-我们受到React组件思维的影响，对Bluepic的架构做了调整，用组件来组织不同的UI item，这一点也确实省了我们切换VC，VM，View folder的时间。 而且我们团队在sprint分任务的时候也是根据组件负责来分的，这也让团队成员更专注于他们的任务
+我们受到React组件思维的影响，对Bluepic的架构做了调整，用组件来组织不同的UI item，这一点也确实省了我们切换ViewController，ViewModel和View文件夹的时间。 而且我们团队在Sprint中分任务的时候也是根据组件负责来分的，这也让团队成员更专注于他们的任务
 
 ![image](https://image.ibb.co/enH8c5/Screen_Shot_2017_08_01_at_11_59_22_PM.png)
 
@@ -70,9 +70,9 @@ Utilities/ | 工具类文件夹
 
 ![image](https://image.ibb.co/c6bjH5/Screen_Shot_2017_08_02_at_12_16_02_AM.png)
 
-以Category Component为例子，他有自己的VC，VM和Xib view。 这里Xib就不过多解释了，里面有autoLayout和基本的UI信息。
+以Category Component为例子，他有自己的ViewController，ViewModel和Xib view。 这里Xib就不过多解释了，里面有autoLayout和基本的UI组件。
 
-VC的实现如下,其中的CategoryViewModelNotification是View Model给View Controller传信息的interface. 在VC中会有一个viewModel的reference，以及一个用于初始化ViewModel的notifyVC方法
+ViewController的实现如下,其中的CategoryViewModelNotification是View Model给View Controller传信息的消息约定. 在ViewController中会有一个ViewModel的reference，以及一个用于初始化ViewModel的notifyVC方法
 
 ```swift
 class CategoryViewController: UIViewController {
@@ -115,7 +115,7 @@ extension CategoryViewController {
 
 ```
 
-VM的实现如下,VM会直接与Data Manager联系来更新当前这个component的状态或者数据，然后成功后会通过初始化时ViewController传来的notifyVC来通知View Controller更新UI
+ViewModel的实现如下,ViewModel会直接与Data Manager联系来更新当前这个Component的状态或者数据，然后成功后会通过初始化时ViewController传来的notifyVC来通知View Controller更新UI
 
 ```swift
 enum CategoryViewModelNotification {
@@ -150,7 +150,89 @@ class CategoryViewModel: NSObject {
 
 # 内存泄漏问题，三角关系泛滥
 
-但是由于我们
+以上这种模式是BluePic里所采用的，使用名为notifyVC的@escaping函数来作为绑定媒介。在初始化的时候把定义在ViewController的notifyVC绑定到ViewModel里面，当ViewModel中的数据发生变化时，用这个绑定好的函数来进行对ViewController的通知。
 
+但是这种方法，由于在绑定方法的时候，会将这个notifyVC函数当成参数传入。由于不像Javascript，Swift中没有函数对象，这里的函数会被转换为closure。 而在这个closure中又保持了一个对于ViewController self的strong reference,这里就会产生循环依赖关系。如下图
+
+![image](https://preview.ibb.co/kz1Tc5/Screen_Shot_2017_08_02_at_11_38_41_PM.png)
+
+这样每一个Component的VC，VM，View的组合都是一个个闭合的三角循环依赖关系。由于iOS没有垃圾回收机制而是使用的ARC，这种循环引用会导致每次初始化一个Component都会导致一次内存泄漏，这在我团队的项目中很严重，每次切换语言重新渲染的时候都会有50MB左右的内存泄漏。
 
 # 解决方法
+
+我们要解决这个问题只需要打破三角关系中的一环，由于外部初始化component会从ViewController开始，销毁也一般会调用VC的removeFromParentVC方法。所以我们选择让他们的关系变成如下这样（虚线代表弱引用）
+
+![image](https://preview.ibb.co/h3RKH5/Screen_Shot_2017_08_02_at_11_47_18_PM.png)
+
+具体解决方法有两种
+
+## 使用unowned或者weak关键字修饰notifyVC里的self，强制closure使用弱引用
+
+在Viewcontroller中新加一个变量
+
+```swift
+  lazy var weakNotifyVC: (_ viewModelNotification: ProductListingPageViewModelNotification) -> Void ={                         [unowned self] in
+         return self.notifyVC
+  }()
+```
+
+在绑定的时候把这个weakNotifyVC传进ViewModel来做初始化，这样直接就把closure里的self reference变成weak类型，也就解决了这个问题
+
+
+## 使用delegate模式，把一个变量传给ViewModel来初始化而不是传一个函数进去
+
+先定义一个专门用来做VC和VM绑定的protocol
+
+```swift
+protocol NotifyVCDelegate: class {
+    func notifyVC(notification: Any)
+}
+```
+
+然后ViewController实现这个protocol
+
+```swift
+extension CategoryViewController: NotifyVCDelegate {
+
+    func notifyVC(notification: Any) {
+        if let notifyVC = notification as? CategoryViewModelNotification {
+            self.notifyVC(notifyVC)
+        }
+    }
+
+    func notifyVC(_ notification: CategoryViewModelNotification) {
+        switch notification {
+        case .A:
+            self.doA()
+            break
+        case .B:
+            self.doB()
+            break
+        }
+    }
+}
+```
+
+并且修改ViewModel的初始化函数,并且在ViewModel中介入一个notifyVCDelegate，这里的notifyVC函数复用了之前的实现，就不载多做描述了
+
+```swift
+
+   weak var notifyVCDelegate: NotifyVCDelegate!
+   init(notifyVC : NotifyVCProtocol) {
+       super.init()
+       self.notifyVCDelegate = notifyVC
+   }
+
+```
+
+并且改变ViewController中对ViewModel的初始化代码
+
+```swift
+self.viewModel = CategoryViewModel(notifyVC: self)
+```
+
+由于self是一个object，Swift会按引用传值，在ViewModel内部我们给他绑定了一个weak的引用，这样的话也就解决了之前closure到ViewController的强引用问题
+
+# 小结
+
+由于没有现成的绑定机制，所以MVVM在iOS中的实现要稍微复杂些。又由于Swift中函数并不是一等公民，在以函数为值传递到另一个函数中时，他会变成一个closure，而closure的内存泄漏已经是自从OC一来的一个臭名昭著的问题了。由于我在Javascript中的书写习惯，总喜欢把函数当作一个对象来处理，导致了这个bug。Swift个人认为更适合于面向协议的编程方式，这种方式也更符合ARC的工作机制，更方便也更直观计算每个对象的reference数目。所以我个人比较推荐第二种解决方案。第一种解决方案更像是OC留下的一个语法糖，这种非Swift风格的代码也很有可能在之后的Swift更新中被重构掉。
