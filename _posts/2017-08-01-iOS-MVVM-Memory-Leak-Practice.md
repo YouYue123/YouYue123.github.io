@@ -235,4 +235,4 @@ self.viewModel = CategoryViewModel(notifyVC: self)
 
 # 小结
 
-由于没有现成的绑定机制，所以MVVM在iOS中的实现要稍微复杂些。又由于Swift中函数并不是一等公民，在以函数为值传递到另一个函数中时，他会变成一个closure，而closure的内存泄漏已经是自从OC一来的一个臭名昭著的问题了。由于我在Javascript中的书写习惯，总喜欢把函数当作一个对象来处理，导致了这个bug。Swift个人认为更适合于面向协议的编程方式，这种方式也更符合ARC的工作机制，更方便也更直观计算每个对象的reference数目。所以我个人比较推荐第二种解决方案。第一种解决方案更像是OC留下的一个语法糖，这种非Swift风格的代码也很有可能在之后的Swift更新中被重构掉。
+由于没有现成的绑定机制，所以MVVM在iOS中的实现要稍微复杂些。Swift中函数是一等公民，可以把函数当成参数传递到另一个函数中，但是他会变成一个closure，会保持对外部的引用关系，Closure相关的内存泄漏也是一个[iOS的经典问题](https://medium.com/@streem/understanding-memory-leaks-in-closures-48207214cba)。Swift个人认为在不同的类的交互之间更适合于面向协议的编程方式，这种方式也更符合ARC的工作机制，更方便也更直观计算每个对象的reference数目。所以我个人比较推荐第二种解决方案。第一种解决方案更像是OC留下的一个语法糖，这种非Swift风格的代码也很有可能在之后的Swift更新中被重构掉。
