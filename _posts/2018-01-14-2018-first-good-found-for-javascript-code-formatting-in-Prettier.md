@@ -13,7 +13,7 @@ Linting javascript code is always a debatable issue for either a large developme
   2. Sustainable codebase maintainability
   3. Less stupid mistake
 
-And linting toolkit is even more important for javascript than Java or C++. As Javascript is too freedom because its dynamic and loosely-type feature. And it is one of the fastest envolving programming language in the world. Community and developers are even using its future feature(ES9 features for instance) by using (Babel)[https://babeljs.io/] or other transcompile tools. In the same time, Python community is still under discussing about (python 2 vs python 3)[https://www.activestate.com/blog/2017/01/python-3-vs-python-2-its-different-time]. Because of javascript is growing too fast, there are lots of ways to write your code like using semi-comma or not to use it. This can be a 1 day discussion for your team.
+And linting toolkit is even more important for javascript than Java or C++. As Javascript is too freedom because its dynamic and loosely-type feature. And it is one of the fastest envolving programming language in the world. Community and developers are even using its future feature(ES9 features for instance) by using [Babel](https://babeljs.io/) or other transcompile tools. In the same time, Python community is still under discussing about [python 2 vs python 3](https://www.activestate.com/blog/2017/01/python-3-vs-python-2-its-different-time). Because of javascript is growing too fast, there are lots of ways to write your code like using semi-comma or not to use it. This can be a 1 day discussion for your team.
 
 So it is really important to write your javascript code inside a limitation box. And it would be better if I am out the box someone can help me to move it back automatically.
 
