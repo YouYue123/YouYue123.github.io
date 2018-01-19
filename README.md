@@ -17,7 +17,7 @@ You can watch it in action [here](https://panossakkos.github.io/personal-jekyll-
 
 ## How to run locally
 
-First, you need to install jekyll and the dependencies of { Personal } by running:
+First, you need to install Jekyll and the dependencies of { Personal } by running:
 
 ```shell
 ./scripts/install
@@ -34,4 +34,3 @@ To serve across lan (requires su to forward the port 4000 over lan):
 ```shell
 ./scripts/serve-lan-production
 ```
-
