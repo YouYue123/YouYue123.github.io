@@ -87,10 +87,10 @@ The new version PCL(1.8.0) is release by using OPENGL2 as its rendering backend.
 
 5.While configuring PCL compling options, choose the VTK we compiled by choosing OpenGL
 
-![image](/img/PCLCMake.png)
+![image](/img/PCLCmake.png)
 
 6.Make compile and make install for PCL
 
 7.While compling PCLVisualizer, choose the PCL and VTK we compiled just now.
 
-![image](/img/VisualizationCMake.png)
+![image](/img/VisualizationCmake.png)
