@@ -1,7 +1,7 @@
 # You Yue Blog
-![build](https://img.shields.io/travis/USER/REPO.svg)
+![build](https://img.shields.io/badge/build-success-green.svg)
 ![license](https://img.shields.io/badge/license-MIT-blue.svg?link=https://github.com/dono-app/ios/blob/master/LICENSE)
-![deploy](https://img.shields.io/dockbit/ORGANIZATION_NAME/PIPELINE_NAME.svg?token=PIPELINE_TOKEN)
+![deploy](https://img.shields.io/badge/deploy-success-green.svg)
 
 Credit to { Personal }
 
