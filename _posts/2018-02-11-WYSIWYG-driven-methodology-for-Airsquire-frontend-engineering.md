@@ -18,7 +18,7 @@ Basically in Airsquire the methodology is practiced mainly based on the followin
 
 <center>
 
-| Tech stack item | Explaination |
+Tech stack item | Explaination
 ------ | -------
 React  | Component-based user interface library 
 Typescript | Typed superset of Javscript
