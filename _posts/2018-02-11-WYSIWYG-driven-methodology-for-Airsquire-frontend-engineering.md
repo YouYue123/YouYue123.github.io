@@ -16,18 +16,15 @@ This article is divided into 3 parts
 
 Basically in Airsquire the methodology is practiced mainly based on the following tech stack.
 
-<center>
+React -- Component-based user interface library 
 
-Tech stack item | Explaination
------- | -------
-React  | Component-based user interface library 
-Typescript | Typed superset of Javscript
-Jest | Testing framework
-Storybook | UI driven development tool
-Yarn | Package manager
+Typescript -- Typed superset of Javscript
 
-</center>
+Jest -- Testing framework
 
+Storybook -- UI driven development tool
+
+Yarn -- Package manager
 
 ### What
 
@@ -47,8 +44,6 @@ Here is the definition of deterministic for a development team.
 
 This is a sample of "non-deterministic" situation in Javascript
 
-<center>
-
 ```javascript 
 var a = 10
 a += '0'
@@ -58,7 +53,6 @@ if (a == 10) {
     console.log('WTF is happending. Is my math screwed up?')
 }
 ```
-</center>
 
 This example above will output *WTF is happending. Is my math screwed up?* Because javascript has a rule to change your number into a string explicitly when you want to use '+' between a string and a number. This is already kind-of non-deterministic for a human, because there are so many hidden rules. Imagine you have 100k lines of code which is shared between a team of 10. Every day there are 100 commits. In order to maintain the rubust the only way is to write more test case to cover these parts which can easily checked by a static type-checking system.
 
