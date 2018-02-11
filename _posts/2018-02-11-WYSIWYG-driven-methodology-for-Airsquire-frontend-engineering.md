@@ -3,7 +3,7 @@ layout: post
 section-type: post
 title: Deterministic WYSIWYG driven methodology for Airsquire frontend engineering
 category: Tech
-tags: [ 'frontend', 'TDD' ]
+tags: [ 'Frontend', 'TDD' ]
 ---
 
 ## TL;DR
@@ -54,10 +54,12 @@ if (a == 10) {
 
 This example above will output *WTF is happending. Is my math screwed up?* Because javascript has a rule to change your number into a string explicitly when you want to use '+' between a string and a number. This is already kind-of non-deterministic for a human, because there are so many hidden rules. Imagine you have 100k lines of code which is shared between a team of 10. Every day there are 100 commits. In order to maintain the rubust the only way is to write more test case to cover these parts which can easily checked by a static type-checking system.
 
-The thinking has already widely adopted for lots of excellent companies like [Facebook Flow](https://github.com/facebook/flow), [new Python 3.5 standard](https://docs.python.org/3/library/typing.html), [Microsoft Typescript](https://www.typescriptlang.org/). 
+![image](https://blog.testim.io/wp-content/uploads/2017/06/The_Present_02.jpg)
+
+Frontend codebase is occupying a huge percentage in current technology world. This thinking has already widely adopted for lots of excellent companies' frontend team like [Facebook Flow](https://github.com/facebook/flow), [new Python 3.5 standard](https://docs.python.org/3/library/typing.html), [Microsoft Typescript](https://www.typescriptlang.org/). 
 
 
-### WYSIWYG
+#### WYSIWYG
 
 [WYSIWYG](https://en.wikipedia.org/wiki/WYSIWYG) is an acronym for "what you see is what you get". WYSIWYG implies a user interface that allows the user to view something very similar to the end result
 
@@ -86,17 +88,37 @@ describe('<Foo />', () => {
 Ther above example is good but not enough. Because frontend is a visual interface. Computer is very good to understand code level test case but we are not. Human are basically visual sensitive and easily detect error for even [1 pixel level problem](http://cdn.ustwo.com/PPP/PP3.pdf). And another problem is that sometimes frontend problem is subjective. Before you see it you will never know whether you will like it or not. Give you 1 minites. Can you imagine a user interface based on the above example? Here is one of the possible [result](https://www.youtube.com/watch?v=fpxDuTNzEqk). 
 
 
-
-#### Why
+### Why
 
 There are 3 reasons we are implementing this methodology
 
-1. Visual-documented codebase
+1. Visually-documented codebase
 2. Fast iteration with high error tolerence
-3. 
+3. User experience based development
+
+#### Visually-documented codebase
+
+![image](https://youyue123.github.io/img/Visually-documented-codebase-1.png)
+![image](https://youyue123.github.io/img/Visually-documented-codebase-2.png)
+
+Compare the above example with this [3368 lines of code file](https://github.com/lonelyplanet/backpack-ui/blob/master/stories/index.jsx). They are presenting the same thing. The difference is obvious. Especially Airsquire team is developing a 3D solution and it is hard to imagine only by the code itself. This visually documented codebase really helps us to communicate with client directly and efficiently.
+
+#### Fast iteration with high error tolerence
+
+![image](https://youyue123.github.io/img/Fast-iteration-with-high-error-tolerence.png)
+
+The static typing system helps to detected lots of low-level mistakes. Our team is delivering product weekly based. There is always a trade-off between test coverage and functional points. By using javascript we really befinit from its amazing opensource community, efficient syntax sugars, fast prototyping speed. But *there's no such thing as a free lunch*, team is facing unstability issues for using javascript in both frontend and backend. It really helps us to avoid weird debugging edge cases
+
+Another reason is that our team’s developers are already accustom to statically-typed languages like Swift, C++, Java.
+
+#### User experience based development
+
+![image](https://youyue123.github.io/img/User-experience-based-development.jpg)
+
+This is the following effect by our visual-documented codebase. Sometimes we will work in client side and asking their opnion about user experience. They are not computer science people and showing thousands line of code will just shock them. This document gives an interactive way of communication between team and customer directly. 
+
 
 
 ### How
 
-
-
+To be Continue
