@@ -16,13 +16,18 @@ This article is divided into 3 parts
 
 Basically in Airsquire the methodology is practiced mainly based on the following tech stack.
 
-Tech stack item | Explaination
+<center>
+
+| Tech stack item | Explaination |
 ------ | -------
 React  | Component-based user interface library 
 Typescript | Typed superset of Javscript
 Jest | Testing framework
 Storybook | UI driven development tool
 Yarn | Package manager
+
+</center>
+
 
 ### What
 
@@ -34,13 +39,15 @@ Here is the definition of deterministic for computer science from Wikipedia. In 
 
 > A deterministic model of computation, for example a deterministic Türing machine, is a model of computation such that the successive states of the machine and the operations to be performed are completely determined by the preceding state.
 
-Actually for every piece of javascript you are running it is deterministic for computer in binary world. But in team collaboration, this is not always the truth. Especially when team are developing in [dynamicly typed language](https://www.computerhope.com/jargon/l/looslang.htm) like Javascript, Python, Ruby. Because in most of these languages is no compiler to do static type-checking, you may find yourself searching for a bug that is due to the interpreter misinterpreting the type of a variable.
+Actually for every piece of javascript you are running it is deterministic for computer in binary world. But in team collaboration, this is not always the truth. Especially when team are developing in [dynamicly typed language](https://www.computerhope.com/jargon/l/looslang.htm) like Javascript, Python, Ruby. Because in most of these languages is no compiler to do static type-checking, you may find yourself searching for a bug that is due to the interpreter misinterprets a variable.
 
 Here is the definition of deterministic for a development team.
 
 > Codebase is understandable and behavior is predictable for even new team members without knowing those special programming tricks.
 
 This is a sample of "non-deterministic" situation in Javascript
+
+<center>
 
 ```javascript 
 var a = 10
@@ -51,6 +58,7 @@ if (a == 10) {
     console.log('WTF is happending. Is my math screwed up?')
 }
 ```
+</center>
 
 This example above will output *WTF is happending. Is my math screwed up?* Because javascript has a rule to change your number into a string explicitly when you want to use '+' between a string and a number. This is already kind-of non-deterministic for a human, because there are so many hidden rules. Imagine you have 100k lines of code which is shared between a team of 10. Every day there are 100 commits. In order to maintain the rubust the only way is to write more test case to cover these parts which can easily checked by a static type-checking system.
 
