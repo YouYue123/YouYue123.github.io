@@ -32,7 +32,7 @@ lang: "en"
 author: "You Yue"
 title: "You Yue"
 description: "Blog and website of You Yue, blogging mainly for tech. Opinions expressed are mine."
-keywords: "blog, youyue, nodeJs, iOS, Design Pattern"
+keywords: "blog,You Yue, Airsquire, Technology"
 favicon: "/img/favicon.ico"
 
 ################
@@ -57,7 +57,7 @@ delete-delay: 5000
 lines: # You can add HTML Tags in the Text
   - text: "过往不恋，当时不杂，未来不迎"
   - text: "悟已往之不谏,知来者之可追"
-me-img: "/img/avatar.jpg"
+me-img: "/img/avatar.jpeg"
 ##############################
 # Color the browser elements #
 ##############################
@@ -85,9 +85,9 @@ icon-192p: "/img/web-app/icon-192p.png"
 
 enable-gesture-navigation: True
 
-post-preview-words: 150
+post-preview-words: 300
 
-paginate: 5
+paginate: 8
 
 email-share: True
 fb-share: True
@@ -111,10 +111,16 @@ syntax-highlight: True
 events:
   - image: "/img/timeline/spidertocat.png"
     date: "21th August 1991"
-    description: "Born in China"
+    description: "Born"
   - image: "/img/timeline/baracktocat.jpg"
     date: "September 2010"
     description: "Started coding"
+  - image: "/img/timeline/ibm.png"
+    date: "September 2015"
+    description: "Start IBM"
+  - image: "/img/timeline/airsquire.png"
+    date: "September 2017"
+    description: "Start Airsquire"
 
 # First image of the Timeline
 
@@ -134,7 +140,7 @@ email: "youy0004123@gmail.com"
 # This works best when your author blurb image has a transparent background, or matches your site background color.
 
 # if the author_blurb is not set, then this feature is skipped
-author_blurb: "You Yue is an awesome person. He lives in Singapore, where he works in IBM. In his spare time, he likes to drink ice lemon tea."
+author_blurb: "I am CTO @ Airsquire. I am living in Netherlands"
 author_blurb_image: "/img/avatar.jpg"
 
 ##################
@@ -144,8 +150,8 @@ author_blurb_image: "/img/avatar.jpg"
 social:
   - title: "github"
     url: "https://github.com/YouYue123"
-  - title: "bitcoin"
-    url: "https://bitcoin.org/"
+  - title: "github"
+    url: "https://stackoverflow.com/users/9053019/yue-you"
   - title: "linkedin"
     url: "https://www.linkedin.com/in/yue-you-797807b0?trk=hp-identity-photo"
   - title: "rss"
