@@ -3,7 +3,7 @@ layout: post
 section-type: post
 title: Deterministic WYSIWYG driven methodology for Airsquire frontend engineering
 category: Tech
-tags: [ 'Frontend', 'TDD' ]
+tags: [ 'Frontend', 'Airsquire' ]
 ---
 
 ### TL;DR

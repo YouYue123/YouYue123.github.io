@@ -3,7 +3,7 @@ layout: post
 section-type: post
 title: iOS MVVM 和潜在的内存泄漏问题 in Swift 3
 category: tech
-tags: [ 'MVVM', 'iOS', 'Memory leak']
+tags: [ 'frontend']
 ---
 
 ## 背景

@@ -3,7 +3,7 @@ layout: post
 section-type: post
 title: PCL-- Bug Fix -- Crash when using addPointCloudNormals
 category: tech
-tags: [ 'pcl', 'point cloud', '3D', 'Computer vision', 'Airsquire']
+tags: [ 'backend', 'Airsquire']
 ---
 
 ## Problem

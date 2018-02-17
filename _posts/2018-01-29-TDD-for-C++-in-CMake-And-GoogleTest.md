@@ -3,7 +3,7 @@ layout: post
 section-type: post
 title: TDD for C++ in CMake and GoogleTest
 category: tech
-tags: [ 'Test driven development','C++','CMake','googletest','OpenGL', 'Ubuntu']
+tags: ['backend','Airsquire']
 ---
 
 ## Goal

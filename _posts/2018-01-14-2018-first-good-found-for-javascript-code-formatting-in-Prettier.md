@@ -3,7 +3,7 @@ layout: post
 section-type: post
 title: 2018 good found for javascript - Code formatting in Prettier
 category: tech
-tags: [ 'Javascript', 'Code formatting', 'Prettier', 'EsLint']
+tags: ['frontend']
 ---
 
 ## Javascript Code lint really matters
