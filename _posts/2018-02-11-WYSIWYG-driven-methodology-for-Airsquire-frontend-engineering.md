@@ -1,7 +1,7 @@
 ---
 layout: post
 section-type: post
-title: Deterministic WYSIWYG driven methodology for Airsquire frontend engineering
+title: Visual Test-Driven driven for Airsquire frontend engineering
 category: Tech
 tags: [ 'Frontend', 'Airsquire' ]
 ---
@@ -9,6 +9,8 @@ tags: [ 'Frontend', 'Airsquire' ]
 ### TL;DR
 
 This article is divided into 3 parts 
+
+In Airsquire, we are using Deterministic WYSIWYG driven methodology.
 
 1. What -- What is Deterministic WYSIWYG driven methodology in frontend engineering
 2. Why -- What is the befinit we can get from the methodology
