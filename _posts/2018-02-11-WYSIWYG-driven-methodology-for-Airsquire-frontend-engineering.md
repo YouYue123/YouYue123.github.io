@@ -125,4 +125,4 @@ This is the following effect by our visual-documented codebase. Sometimes we wil
 
 ### How
 
-To be Continue
+Continued at [Airsquire frontend opensource practice](https://youyue123.github.io/category/2018/02/17/Airsquire-opensource-practice.html)

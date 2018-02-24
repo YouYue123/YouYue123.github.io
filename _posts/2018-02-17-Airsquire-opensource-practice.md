@@ -1,7 +1,7 @@
 ---
 layout: post
 section-type: post
-title: Airsquire Opensource practice
+title: Airsquire frontend opensource practice
 category: Category
 tags: [ 'Airsquire', 'frontend' ]
 ---
