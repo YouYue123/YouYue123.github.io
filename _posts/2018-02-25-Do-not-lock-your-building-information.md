@@ -42,7 +42,7 @@ In 2016 Autodesk and Trimble issued a [joint press release](https://www.business
 
 There are lots of organizations like [buildingSMART](https://www.buildingsmart.org/), [openBIM](http://www.openbim.org/) who wants to make BIM more open, standard and solid.  And IFC is invented and are designed as a standard for sharing 3D model data and other related data. IFC stands for Industry Foundation Classes. The Industry Foundation Classes (IFC) data model is intended to describe building and construction industry data. It is a platform neutral, open file format specification that is not controlled by a single vendor or group of vendors.
 
-### Ceveat
+### Caveat
 
 As you can see, the IFC format is designed by third-party organization but in-practice software is developed by other vendors. There is a gap to adopt IFC in for existing software companies. And from some of our customers' feedback, there is always a data loss when sharing data between different vendors using IFC.
 
@@ -54,12 +54,12 @@ As you can see, the IFC format is designed by third-party organization but in-pr
 
 ![image](/img/forge-logo.png)
 
-In Airsquire, we are practicing SaaS standard for the data. The result of AI verifier behind AirSync will always be shown as open standard format. 
+In Airsquire, we are practicing SaaS standard for the data. The result of AirSync will always be shown as open standard format. 
 
-Furthermore, we are currently integrating with Trimble Connect to make **everyone and everything** of your BIM be connected. By using it, customer can easily upload verified BIM model to cloud space and import it **anywhere** such as Revit, Tekla structure, sketchup and so on.
+Furthermore, we are integrating with Trimble Connect to make **everyone and everything** of your BIM be connected. By using it, customer can easily upload verified BIM model to cloud space and import it **anywhere** such as Revit, Tekla structure, sketchup and so on.
 
-For data input, we are engaging with Autodesk Forge platform to convert design file into open standard formats. By integrating with this, Airsync will support more than 60 formats and BIM from any Autodesk software can be directly understood by our AI verifier.
+For data input, we are engaging with Autodesk Forge platform to convert design file into open standard formats. By integrating with this, Airsync will support more than 60 formats and BIM from any Autodesk software can be directly understood by Airsync.
 
-### Ceveat 
+### Caveat 
 
 Because of the limitation of [Model Derivative API](https://developer.autodesk.com/api/model-derivative-and-viewer-cover-page/). AirSync will only natively support BIM from Autotesk software. But customer can provide IFC data if it is supported from their BIM software. And in the meantime we are also working to provide API to support non-Autodesk format native supporting for our major customers.
