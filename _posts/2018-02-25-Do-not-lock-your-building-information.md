@@ -48,7 +48,7 @@ As you can see, the IFC format is designed by third-party organization but in-pr
 
 ## How Airsquire do it 
 
-## Trimble Connect + Autodesk Forge  
+### Trimble Connect + Autodesk Forge  
 
 ![image](/img/trimble-connect.png)
 
@@ -60,6 +60,6 @@ Furthermore, we are currently integrating with Trimble Connect to make **everyon
 
 For data input, we are engaging with Autodesk Forge platform to convert design file into open standard formats. By integrating with this, Airsync will support more than 60 formats and BIM from any Autodesk software can be directly understood by our AI verifier.
 
-## Ceveat 
+### Ceveat 
 
 Because of the limitation of [Model Derivative API](https://developer.autodesk.com/api/model-derivative-and-viewer-cover-page/). AirSync will only natively support BIM from Autotesk software. But customer can provide IFC data if it is supported from their BIM software. And in the meantime we are also working to provide API to support non-Autodesk format native supporting for our major customers.
