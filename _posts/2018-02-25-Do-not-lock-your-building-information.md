@@ -12,19 +12,27 @@ Building information modeling (BIM) is a process involving the generation and ma
 
 ### The good side
 
-The building information modeling is [rasing dramaticlly](https://www.thenbs.com/knowledge/nbs-national-bim-report-2017) to make smarter decision during the whole life cycle for a building( **plan -- design -- construct -- operate -- maintain **). 
+![image](/img/bim-adoption.png)
+
+Building information modeling is [rasing dramaticlly](https://www.thenbs.com/knowledge/nbs-national-bim-report-2017) to make smarter decision during the whole life cycle for a building 
+
+**plan --> design --> construct --> operate --> maintain**
 
 BIM is adopted by lots of the countries' government as an standard industry practice. From the [report from GeoSpatial World](https://www.geospatialworld.net/blogs/bim-adoption-around-the-world/), take Germany for example, in 2015 the government announced the formation of the Digital Building Platform — a BIM task group created by several industry-led organizations to develop a national BIM strategy.
 
 ### The bad side
 
-![image](youyue123.github.io/img/bim-market-share.jpg)
+![image](/img/bim-market-share.jpg)
 
 But in practice, there is no standard way to build BIM. For example, structure architect will use TEKLA structures for steel structure design. BIM engineer will consolidate a detailed model in Autodesk Revit. Project manager will use VICO Office to do a 4D scheduling. 
 
 This may even more complex. Because there are typically more than 1 contractors for a building development and most of them are not sharing the same software, there are huge interoperability issues. And even for same software, [upgrading version will cause a huge compatibility concern](https://forums.autodesk.com/t5/autocad-forum/autocad-2018-backwards-compatibility/td-p/6998902). It is destroying the core meaning for BIM -- exchangable for all people in project to get a clear information.
 
 ## OpenBIM Standard
+
+In order to tackle this information sharing problem, the best way is to construct a standard like the web world to make agreement across different vendors.
+
+![image](/img/open-bim.png)
 
 ### Effort from major vendors
 
@@ -42,12 +50,16 @@ As you can see, the IFC format is designed by third-party organization but in-pr
 
 ## Trimble Connect + Autodesk Forge  
 
+![image](/img/trimble-connect.png)
+
+![image](/img/forge-logo.png)
+
 In Airsquire, we are practicing SaaS standard for the data. The result of AI verifier behind AirSync will always be shown as open standard format. 
 
-And furthermore, we are currently integrating with Trimble Connect to make everyone and everything of your BIM connected. By using Trimble connect, customer can easily upload verified BIM model to cloud space and import it anywhere such as Revit, Tekla structure, sketchup and so on.
+Furthermore, we are currently integrating with Trimble Connect to make **everyone and everything** of your BIM be connected. By using it, customer can easily upload verified BIM model to cloud space and import it **anywhere** such as Revit, Tekla structure, sketchup and so on.
 
-For input of data, we are engaging with Autodesk Forge platform to convert your design file into open standard formats. It will support more than 60 formats and BIM data in Autodesk software suit can be easily understood by our AI verifier without any additional action from customer.
+For data input, we are engaging with Autodesk Forge platform to convert design file into open standard formats. By integrating with this, Airsync will support more than 60 formats and BIM from any Autodesk software can be directly understood by our AI verifier.
 
 ## Ceveat 
 
-Because of the limitation of Model Derivative API from Autodesk Forge, AirSync will only natively support BIM model from Autotesk software. But customer can also provide IFC data if it is supported from their BIM software. And in the future, we will also provide API to support non-Autodesk format native supporting for our major customers.
+Because of the limitation of [Model Derivative API](https://developer.autodesk.com/api/model-derivative-and-viewer-cover-page/). AirSync will only natively support BIM from Autotesk software. But customer can provide IFC data if it is supported from their BIM software. And in the meantime we are also working to provide API to support non-Autodesk format native supporting for our major customers.
