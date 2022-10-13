@@ -2,16 +2,17 @@
 layout: post
 section-type: post
 title: 2018 good found for javascript - Code formatting in Prettier
-category: tech
-tags: ['frontend']
+category: engineering
+tags: ["frontend"]
 ---
 
 ## Javascript Code lint really matters
 
 Linting javascript code is always a debatable issue for either a large development team or a single developer. It matters because we want :
-  1. Efficient team collaboration
-  2. Sustainable codebase maintainability
-  3. Less stupid mistake
+
+1. Efficient team collaboration
+2. Sustainable codebase maintainability
+3. Less stupid mistake
 
 And linting toolkit is even more important for javascript than Java or C++. As Javascript is too freedom because its dynamic and loosely-type feature. And it is one of the fastest envolving programming language in the world. Community and developers are even using its future feature(ES9 features for instance) by using [Babel](https://babeljs.io/) or other transcompile tools. In the same time, Python community is still under discussing about [python 2 vs python 3](https://www.activestate.com/blog/2017/01/python-3-vs-python-2-its-different-time). Because of javascript is growing too fast, there are lots of ways to write your code like using semi-comma or not to use it. This can be a 1 day discussion for your team.
 
@@ -23,11 +24,11 @@ There are lots of ways to help you to build the limitation box.
 
 Here I list some of the major players today and compare pros and cons.
 
-Name | Description | Pros | Cons
---- | --- | --- | --
-[JSLint](http://jslint.com/)   | JSLint is a JavaScript program that looks for problems in JavaScript programs. It is a code quality tool.  | It comes with the out-of-box configuration   | 1.It is not ready for fully customizable configurations  2.It only supports 'the good parts of ES6' now 3.Undocumented features 4.No custom rule support
-[JSHint](http://jshint.com/)   | JSHint is a community-driven tool that detects errors and potential problems in JavaScript code. | 1.Customizable configuration  2.Basic ES6 support 3.Contains Out-of-box features | 1.No JSX support 2.Hard to know which rule is failed 3.No custom rule support
-[ESLint](https://eslint.org/) | The pluggable linting utility for JavaScript and JSX |  1.Completely configurable 2.Completely ES6 and JSX support 3.Good community to provide out-of-box configurations 4. Allow to create custom rules |  1.Bit hard to learn to use in the first time, because it has too many customizable points.
+| Name                          | Description                                                                                               | Pros                                                                                                                                             | Cons                                                                                                                                                    |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [JSLint](http://jslint.com/)  | JSLint is a JavaScript program that looks for problems in JavaScript programs. It is a code quality tool. | It comes with the out-of-box configuration                                                                                                       | 1.It is not ready for fully customizable configurations 2.It only supports 'the good parts of ES6' now 3.Undocumented features 4.No custom rule support |
+| [JSHint](http://jshint.com/)  | JSHint is a community-driven tool that detects errors and potential problems in JavaScript code.          | 1.Customizable configuration 2.Basic ES6 support 3.Contains Out-of-box features                                                                  | 1.No JSX support 2.Hard to know which rule is failed 3.No custom rule support                                                                           |
+| [ESLint](https://eslint.org/) | The pluggable linting utility for JavaScript and JSX                                                      | 1.Completely configurable 2.Completely ES6 and JSX support 3.Good community to provide out-of-box configurations 4. Allow to create custom rules | 1.Bit hard to learn to use in the first time, because it has too many customizable points.                                                              |
 
 The comparison clearly shows that ESLint is the best tool for modern javascript now.
 
@@ -38,6 +39,7 @@ Because EsLint only help you to setup the limitation box, but when you step out 
 There are several choices for auto code formatting. Even Eslint itself has a feature for [automatically fixing](https://developer.ibm.com/node/2016/07/27/auto-fixing-formatting-your-javascript-with-eslint/). And in Atom, a package called [linter-eslint](https://github.com/AtomLinter/linter-eslint) will help to read your eslint configuration file and try to automatically fix for you
 
 Actually personally I am facing issue while using the above tool, sometimes it just not help me to fix it. The best tool ever I have use is [Prettier](https://prettier.io/) and its Atom plugin - [PrettierAtom](https://github.com/prettier/prettier-atom). Actually this is still arguable
+
 1. [If eslint can auto fix/format code why to use Prettier? #101](https://github.com/prettier/prettier-eslint/issues/101#issuecomment-335822167)
 2. [Discussion in Boostrap team for adding Prettier to do code formatting](https://github.com/twbs/bootstrap/pull/24323)
 

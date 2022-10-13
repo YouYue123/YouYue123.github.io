@@ -2,8 +2,8 @@
 layout: post
 section-type: post
 title: TDD for C++ in CMake and GoogleTest
-category: tech
-tags: ['backend','Airsquire']
+category: engineering
+tags: ["backend"]
 ---
 
 ## Goal
@@ -18,7 +18,7 @@ Setup a cross-platform Test driven development environment for C++ based on CMak
 - Compiler in remote OS: g++ (Ubuntu 5.4.0-6ubuntu1~16.04.5) 5.4.0 20160609
 - CMake: 3.5.2
 
-## Initiative for C++ TDD 
+## Initiative for C++ TDD
 
 ### 1. Seperate Test code from production
 
@@ -28,12 +28,11 @@ While developing the main product for Airsquire, in order to test some part of t
 
 Actually it is all about testilibity thinking. Before adopting TDD in Airsquire's codebase, team is not always clear for different class's responsibility and how to implement a class method in a testable manner. After adopting it, by the help of test coverage team knows which statement should be maintained or which method should be encaplsuled for good testibility. This really helps maintenance and code is much easier to read not only for machien but also for humanity.
 
-In addition, good structure of C++ code can also take benefit from C++ buidling system. Recompling and linking massive code repeatly is really painful for a C++ programmer. (P.S.: If you see a C++ programmer is playing his cellphone, don't blame on him. He is waiting for the code to be complied). By seperating into good structure, it will reduce time by compiling only the neccessary part. 
+In addition, good structure of C++ code can also take benefit from C++ buidling system. Recompling and linking massive code repeatly is really painful for a C++ programmer. (P.S.: If you see a C++ programmer is playing his cellphone, don't blame on him. He is waiting for the code to be complied). By seperating into good structure, it will reduce time by compiling only the neccessary part.
 
 ### 3. No more "Segment Fault 11" or "Killed"
 
 By setting up a good testing framework like [googletest](https://github.com/google/googletest), this helps the team to document different senario by writting code to explain instead of making ambiguous. And it also helps us to identify which part is getting problem especially the stack trace is not useful. And most of the time C++ runtime gives really comfusing or useless debug information like "Segment Fault 11" or "Killed". Sometimes without a test case to decrease scope, it will need 1 dude day to identify the issue.
-
 
 ## Setup procedure and Sample project
 
@@ -54,33 +53,32 @@ Here is the project structure, the source code can be found in my [github repo](
     │   │   ├── sample_lib_1.hpp  # Declarition file for Sample Library 1
     │   │   ├── CMakeList.txt     # CMake definition file for Sample Library 1
     │   ├── sample_lib_2          # Same as above structure
-    │   │   ├── sample_lib_2.cpp  
-    │   │   ├── sample_lib_2.hpp  
-    │   │   ├── CMakeList.txt    
+    │   │   ├── sample_lib_2.cpp
+    │   │   ├── sample_lib_2.hpp
+    │   │   ├── CMakeList.txt
     │   ├── CMakeList.txt         # CMake defination for the whole src folder
     │   └── main.cpp              # Main entrance
-    ├── tests                
+    ├── tests
     │   ├── testSampleLib1        # Test Sample Lib 1 folder
     │   │   ├── CMakeLists.txt    # CMake defination for Test Sample Lib 1 folder
-    │   │   ├── testSampleLib1.cpp# Test case implementation file 
+    │   │   ├── testSampleLib1.cpp# Test case implementation file
     │   │   ├── testSampleLib1.hpp# Test case declaration file
     │   │   ├── main.cpp          # Entrance of this test case
-    │   │   ├── testSampleLib1.cpp    
+    │   │   ├── testSampleLib1.cpp
     │   ├── testSampleLib2        # Similar to testSampleLib1
     │   │   ├── ...
-    │   │   ├── ...   
+    │   │   ├── ...
     │   │   ├── ...
     │   │   ├── ...
     │   │   └── ...
     │   └── CMakeLists.txt        # CMake defination for the whole tests folder
     └── CMakeLists.txt
 
-
 Here I will eleborate the CMakeLists.txt structure for each detail funtionality.
 
-### Overall CMakeLists.txt 
+### Overall CMakeLists.txt
 
-And outside there is a overall CMakeLists.txt which contains the following content. You can add your additional CMAKE Standard here if you wanna to use more advanced features for recent C++. Don't forget  **enable_testing()**. This will enable your **add_test()** under tests folder. The add_subdirectory will add CMakeLists.txt under src and tests into your project.
+And outside there is a overall CMakeLists.txt which contains the following content. You can add your additional CMAKE Standard here if you wanna to use more advanced features for recent C++. Don't forget **enable_testing()**. This will enable your **add_test()** under tests folder. The add_subdirectory will add CMakeLists.txt under src and tests into your project.
 
 ```bash
 cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
@@ -109,7 +107,6 @@ add_executable (main main.cpp)
 target_link_libraries (main SAMPLE_LIB_1 SAMPLE_LIB_2)
 ```
 
-
 ### CMakeLists.txt under each component
 
 In each component this file defines all of the code need to be compiled and dependency for this component. And it also defines the exported signature.
@@ -132,7 +129,6 @@ target_include_directories(SAMPLE_LIB_1 PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 ```
-
 
 ### CMakeLists.txt under tests
 
@@ -180,7 +176,7 @@ set_target_properties(libgmock PROPERTIES
 # I couldn't make it work with INTERFACE_INCLUDE_DIRECTORIES
 include_directories("${source_dir}/googletest/include"
                     "${source_dir}/googlemock/include")
-          
+
 add_subdirectory(testSampleLib1)
 add_subdirectory(testSampleLib2)
 
@@ -222,9 +218,9 @@ Under build folder you can use a simple commend to run all of the test cases
 
 ```bash
 cd build && make test
-``` 
+```
 
-The result will be 
+The result will be
 
 ```bash
 Running tests...

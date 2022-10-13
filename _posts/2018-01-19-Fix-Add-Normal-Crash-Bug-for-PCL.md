@@ -2,8 +2,8 @@
 layout: post
 section-type: post
 title: PCL-- Bug Fix -- Crash when using addPointCloudNormals
-category: tech
-tags: [ 'backend', 'Airsquire']
+category: engineering
+tags: ["backend"]
 ---
 
 ## Problem
@@ -30,41 +30,41 @@ viewer->addPointCloudNormals<pcl::PointXYZRGB, pcl::Normal> (cloud, normals2, 10
 In Windows the memory dump will be something like this, the error will reported as BAD ACCESS Ssegmentation fault which is not useful at all.
 
 ```
-   pcltest.exe!vtkOStrStreamWrapper::str()  + 0xae bytes  C++ 
-   pcltest.exe!vtkDemandDrivenPipeline::ExecuteDataObject()  + 0x42 bytes  C++ 
-   pcltest.exe!vtkDemandDrivenPipeline::ProcessRequest()  + 0xab bytes  C++ 
-   pcltest.exe!vtkStreamingDemandDrivenPipeline::ProcessRequest()  + 0x430 bytes  C++ 
-   pcltest.exe!vtkExecutive::GetOutputInformation()  + 0x29 bytes  C++ 
-   pcltest.exe!vtkDemandDrivenPipeline::ProcessRequest()  + 0x6e bytes  C++ 
-   pcltest.exe!vtkStreamingDemandDrivenPipeline::ProcessRequest()  + 0x430 bytes  C++ 
-   pcltest.exe!vtkDemandDrivenPipeline::UpdateDataObject()  + 0x81 bytes  C++ 
-   pcltest.exe!vtkDemandDrivenPipeline::UpdateInformation()  + 0x23 bytes  C++ 
-   pcltest.exe!vtkStreamingDemandDrivenPipeline::Update()  + 0xd bytes  C++ 
-   pcltest.exe!vtkExecutive::Update()  + 0x20 bytes  C++ 
-   pcltest.exe!vtkMapper::GetBounds()  + 0x70 bytes  C++ 
-   pcltest.exe!vtkActor::GetBounds()  + 0x120 bytes  C++ 
-   pcl_visualization_debug.dll!vtkFrustumCoverageCuller::Cull()  + 0x14c bytes   
-   pcl_visualization_debug.dll!vtkRenderer::AllocateTime()  + 0xba bytes   
-   pcl_visualization_debug.dll!vtkRenderer::Render()  + 0x703 bytes   
-   pcl_visualization_debug.dll!vtkRendererCollection::Render()  + 0xf3 bytes   
-   pcl_visualization_debug.dll!vtkRenderWindow::DoStereoRender()  + 0xd3 bytes   
-   pcl_visualization_debug.dll!vtkRenderWindow::DoFDRender()  + 0x462 bytes   
-   pcl_visualization_debug.dll!vtkRenderWindow::DoAARender()  + 0x5be bytes   
-   pcl_visualization_debug.dll!vtkRenderWindow::Render()  + 0x70a bytes   
-   pcl_visualization_debug.dll!vtkRenderWindowInteractor::Render()  + 0x44 bytes   
-   pcl_visualization_debug.dll!vtkHandleMessage2()  + 0xeb bytes   
-   pcl_visualization_debug.dll!vtkHandleMessage()  + 0xa9 bytes   
-   user32.dll!7e368734()   
-   [Frames below may be incorrect and/or missing, no symbols loaded for user32.dll]   
-   user32.dll!7e368816()   
-   user32.dll!7e378ea0()   
-   user32.dll!7e378eec()   
-   ntdll.dll!7c90e473()   
-   user32.dll!7e3694d2()   
-   user32.dll!7e378f10()   
-   user32.dll!7e3696c7()   
-   pcl_visualization_debug.dll!vtkWin32RenderWindowInteractor::Start()  + 0xa4 bytes   
-   pcl_visualization_debug.dll!pcl::visualization::PCLVisualizer::spinOnce(int time=100, bool force_redraw=false)  Line 449 + 0xae bytes  C++ 
+   pcltest.exe!vtkOStrStreamWrapper::str()  + 0xae bytes  C++
+   pcltest.exe!vtkDemandDrivenPipeline::ExecuteDataObject()  + 0x42 bytes  C++
+   pcltest.exe!vtkDemandDrivenPipeline::ProcessRequest()  + 0xab bytes  C++
+   pcltest.exe!vtkStreamingDemandDrivenPipeline::ProcessRequest()  + 0x430 bytes  C++
+   pcltest.exe!vtkExecutive::GetOutputInformation()  + 0x29 bytes  C++
+   pcltest.exe!vtkDemandDrivenPipeline::ProcessRequest()  + 0x6e bytes  C++
+   pcltest.exe!vtkStreamingDemandDrivenPipeline::ProcessRequest()  + 0x430 bytes  C++
+   pcltest.exe!vtkDemandDrivenPipeline::UpdateDataObject()  + 0x81 bytes  C++
+   pcltest.exe!vtkDemandDrivenPipeline::UpdateInformation()  + 0x23 bytes  C++
+   pcltest.exe!vtkStreamingDemandDrivenPipeline::Update()  + 0xd bytes  C++
+   pcltest.exe!vtkExecutive::Update()  + 0x20 bytes  C++
+   pcltest.exe!vtkMapper::GetBounds()  + 0x70 bytes  C++
+   pcltest.exe!vtkActor::GetBounds()  + 0x120 bytes  C++
+   pcl_visualization_debug.dll!vtkFrustumCoverageCuller::Cull()  + 0x14c bytes
+   pcl_visualization_debug.dll!vtkRenderer::AllocateTime()  + 0xba bytes
+   pcl_visualization_debug.dll!vtkRenderer::Render()  + 0x703 bytes
+   pcl_visualization_debug.dll!vtkRendererCollection::Render()  + 0xf3 bytes
+   pcl_visualization_debug.dll!vtkRenderWindow::DoStereoRender()  + 0xd3 bytes
+   pcl_visualization_debug.dll!vtkRenderWindow::DoFDRender()  + 0x462 bytes
+   pcl_visualization_debug.dll!vtkRenderWindow::DoAARender()  + 0x5be bytes
+   pcl_visualization_debug.dll!vtkRenderWindow::Render()  + 0x70a bytes
+   pcl_visualization_debug.dll!vtkRenderWindowInteractor::Render()  + 0x44 bytes
+   pcl_visualization_debug.dll!vtkHandleMessage2()  + 0xeb bytes
+   pcl_visualization_debug.dll!vtkHandleMessage()  + 0xa9 bytes
+   user32.dll!7e368734()
+   [Frames below may be incorrect and/or missing, no symbols loaded for user32.dll]
+   user32.dll!7e368816()
+   user32.dll!7e378ea0()
+   user32.dll!7e378eec()
+   ntdll.dll!7c90e473()
+   user32.dll!7e3694d2()
+   user32.dll!7e378f10()
+   user32.dll!7e3696c7()
+   pcl_visualization_debug.dll!vtkWin32RenderWindowInteractor::Start()  + 0xa4 bytes
+   pcl_visualization_debug.dll!pcl::visualization::PCLVisualizer::spinOnce(int time=100, bool force_redraw=false)  Line 449 + 0xae bytes  C++
 ```
 
 The related two discussion can be found at [PCL User Mainling list](http://www.pcl-users.org/PCLVisualizer-crashes-after-addPointCloudNormals-td4029900.html) and [#Issue 1691](https://github.com/PointCloudLibrary/pcl/issues/1601)

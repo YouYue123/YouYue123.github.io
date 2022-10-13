@@ -2,8 +2,8 @@
 layout: post
 section-type: post
 title: Airsquire frontend opensource practice
-category: Category
-tags: [ 'Airsquire', 'frontend' ]
+category: engineering
+tags: ["frontend"]
 ---
 
 ## Summary
@@ -26,32 +26,32 @@ This article is continued from [Deterministic WYSIWYG driven methodology for Air
 The start `package.json` will define name, version, description, keywords, license. For versioning we are practicing [Semantic Versioning 2.0.0](https://semver.org/).
 
 **package.json**
+
 ```json
 {
-    "name": "react-typescript-npm-storybook-boilerplate",
-    "version": "0.1.0",
-    "description": "react typescript npm storybook boilerplate",
-    "keywords": [
-      "react",
-      "typescript",
-      "npm",
-      "boilerplate",
-      "storybook"
-    ],
-    "license": "Apache-2.0"
+  "name": "react-typescript-npm-storybook-boilerplate",
+  "version": "0.1.0",
+  "description": "react typescript npm storybook boilerplate",
+  "keywords": ["react", "typescript", "npm", "boilerplate", "storybook"],
+  "license": "Apache-2.0"
 }
 ```
+
 ### Add dependencies
+
 We recommend to use **[yarn](https://yarnpkg.com/lang/en/)** for deterministic and faster package management.
 
 ```bash
 yarn add react react-dom;
 yarn add @types/react @types/react-dom --dev
 ```
+
 ### Add configuration
+
 Then create `src/` folder and `lib/` for Typescript source and transpiled libary. We also need to config our **tsconfig.json** for this. **Be attention**, the `delcaration` need to be true for generating type defination file in case other people want to use your library in Typescript. The following json file basically configs **what** shall be transcompiled in **which** way to **which** location. PS: [Typescript Configuration Doc](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
 
 **tsconfig.json**
+
 ```json
 {
   "compilerOptions": {
@@ -64,44 +64,39 @@ Then create `src/` folder and `lib/` for Typescript source and transpiled libary
     "removeComments": true,
     "declaration": true,
     "sourceMap": true,
-    "jsx": "react",
+    "jsx": "react"
   },
-  "include": [
-    "./src/**/*.tsx",
-    "./src/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["./src/**/*.tsx", "./src/**/*.ts"],
+  "exclude": ["node_modules"]
 }
 ```
+
 ### Add implementation
+
 Then we add our implementation file under `src/`. For the following implementation and test case I will use [react-typescript-npm-storybook-boilerplate](https://github.com/Airsquire/react-typescript-npm-storybook-boilerplate) for example.
 
 **src/index.tsx**
+
 ```typescript
-import * as React from "react"
+import * as React from "react";
 export interface InterfaceSampleProps {
-    sampleName: string
+  sampleName: string;
 }
 class Sample extends React.Component<InterfaceSampleProps> {
   private static defaultProps = {
-    sampleName: "Hello World"
-  }
+    sampleName: "Hello World",
+  };
   render() {
-    return (
-      <div>
-        {this.props.sampleName}
-      </div>
-    )
+    return <div>{this.props.sampleName}</div>;
   }
 }
-export default Sample
+export default Sample;
 ```
 
 Then we need to transplile source code to a more commonly used standard like `es6 + commonjs`. We also need to add build script in `package.json`
 
 **package.json**
+
 ```json
 {
   ...
@@ -113,25 +108,29 @@ Then we need to transplile source code to a more commonly used standard like `es
 ```
 
 ### Run
-Then use `npm run build` to transpile and you will find 3 files (`index.d.ts`, `index.js`, `index.s.map`) generated under `lib/`. These are your transpiled component and can be imported by other developers in not only Typescript but also any javascript environment which is compatible with your target standard `es6+commonjs`. 
+
+Then use `npm run build` to transpile and you will find 3 files (`index.d.ts`, `index.js`, `index.s.map`) generated under `lib/`. These are your transpiled component and can be imported by other developers in not only Typescript but also any javascript environment which is compatible with your target standard `es6+commonjs`.
 
 ### Attention
- Remember to add `main` and `types` to your package.json for **module resolution**. This can be a very tedious problem. PS: [Module resolution handbook](https://www.typescriptlang.org/docs/handbook/module-resolution.html)
- 
- **package.json**
- ```json
- {
-  ...
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  ...
+
+Remember to add `main` and `types` to your package.json for **module resolution**. This can be a very tedious problem. PS: [Module resolution handbook](https://www.typescriptlang.org/docs/handbook/module-resolution.html)
+
+**package.json**
+
+```json
+{
+ ...
+ "main": "lib/index.js",
+ "types": "lib/index.d.ts",
+ ...
 }
 
- ```
+```
 
 ## Step 2 - Robust from Unit test and Good Coverage
 
 ### Start from Jest and Enzyme
+
 Before we publish our component to NPM we need to run test locally to ensure this will work. We use Jest, Enzyme.
 
 ### Add dependencies
@@ -139,10 +138,13 @@ Before we publish our component to NPM we need to run test locally to ensure thi
 ```bash
 yarn add jest enzyme enzyme-adapter-react-16 @types/jest  ts-jest typescript --dev
 ```
+
 ### Add configuration
+
 Add configuration for both Jest and test script in `package.json`. **Be attention**, we configure jest to consider testcase written in Typescript so need use ts-jest for it.
 
 **package.json**
+
 ```json
 {
   ...
@@ -166,31 +168,32 @@ Add configuration for both Jest and test script in `package.json`. **Be attentio
   ...
 }
 ```
+
 ### Add implementation
+
 Then we create `test/` and add `index.test.tsx` into it. The following code uses Enzyme to util component testing with react.
 
 **test/index.test.tsx**
+
 ```typescript
-import * as Enzyme from "enzyme"
-import * as Adapter from "enzyme-adapter-react-16"
-Enzyme.configure({ adapter: new Adapter() })
-import * as React from "react"
-import Sample from "../"
+import * as Enzyme from "enzyme";
+import * as Adapter from "enzyme-adapter-react-16";
+Enzyme.configure({ adapter: new Adapter() });
+import * as React from "react";
+import Sample from "../";
 
 describe("<Sample />", () => {
   it("renders Sample with Hello Airsquire", () => {
-    const testDescription = "Hello Airsquire"
-    const wrapper = Enzyme.shallow(
-      <Sample
-        sampleName= {testDescription}
-      />
-    )
-    expect(wrapper.find("div").length).toBe(1)
-    expect(wrapper.text()).toBe(testDescription)
-  })
-})
+    const testDescription = "Hello Airsquire";
+    const wrapper = Enzyme.shallow(<Sample sampleName={testDescription} />);
+    expect(wrapper.find("div").length).toBe(1);
+    expect(wrapper.text()).toBe(testDescription);
+  });
+});
 ```
+
 ### Run
+
 Then use `npm test` you will find output like the following in your console and a coverage folder will be generated.
 
 ```bash
@@ -209,6 +212,7 @@ All files |      100 |      100 |      100 |      100 |                   |
 ## Step 3 - Visualise your component documentation
 
 ### Start from Storybook
+
 After running the unit test we know what expectation the component will achieve. But human is a animal with 2 eyes but only 1 brain (We are visually intensive to sense stuffs). We are using storybook to visually show and document the component
 
 ### Add dependencies
@@ -220,31 +224,41 @@ yarn add storybook @types/storybook__react @storybook/addon-actions @storybook/a
 ```
 
 ### Add configuration
-In order to use React + Typescript in storybook we need to create custom configuration folder `.storybook` and add `addons.js`, `config.js`, `webpack.config.js` into it.  PS: [Custom Webpack for Storybook Documentation](https://storybook.js.org/configurations/custom-webpack-config/).
+
+In order to use React + Typescript in storybook we need to create custom configuration folder `.storybook` and add `addons.js`, `config.js`, `webpack.config.js` into it. PS: [Custom Webpack for Storybook Documentation](https://storybook.js.org/configurations/custom-webpack-config/).
 
 **.storybook/addons.js**
+
 ```javascript
-import '@storybook/addon-knobs/register'
+import "@storybook/addon-knobs/register";
 ```
+
 **.storybook/config.js**
+
 ```javascript
-import { configure } from '@storybook/react';
+import { configure } from "@storybook/react";
 function loadStories() {
-  require('../stories');
+  require("../stories");
 }
 configure(loadStories, module);
 ```
+
 **.storybook/webpack.config.js**
+
 ```javascript
-const genDefaultConfig = require('@storybook/react/dist/server/config/defaults/webpack.config.js');
+const genDefaultConfig = require("@storybook/react/dist/server/config/defaults/webpack.config.js");
 module.exports = (baseConfig, env) => {
   const config = genDefaultConfig(baseConfig, env);
-  config.module.rules.push({ test: /\.js$/, loader: "source-map-loader", enforce: "pre" })
+  config.module.rules.push({
+    test: /\.js$/,
+    loader: "source-map-loader",
+    enforce: "pre",
+  });
   config.module.rules.push({
     test: /\.(ts|tsx)$/,
-    loader: require.resolve('awesome-typescript-loader')
+    loader: require.resolve("awesome-typescript-loader"),
   });
-  config.resolve.extensions.push('.ts', '.tsx');
+  config.resolve.extensions.push(".ts", ".tsx");
   return config;
 };
 ```
@@ -254,9 +268,11 @@ In order to make the above Webpack configuration working we need also to add its
 ```bash
 yarn add awesome-typescript-loader source-map-loader --dev
 ```
+
 Then add storybook related script into `package.json` as below
 
 **package.json**
+
 ```json
 {
   ...
@@ -271,40 +287,39 @@ Then add storybook related script into `package.json` as below
 
 ### Add implementation
 
-Then we create `stories/` and add `index.tsx` into it. 
+Then we create `stories/` and add `index.tsx` into it.
 
 **stories/index.tsx**
-```javascript
-import * as React from "react"
-import { storiesOf } from "@storybook/react"
-import { withKnobs, text } from "@storybook/addon-knobs/react"
-import Sample from '../'
-const SampleStory = storiesOf("Sample", module)
-SampleStory.addDecorator(withKnobs)
-SampleStory.add("default", () => {
-  const sampleText = text("Label", "Hello Airsquire")
-  return (
-    <Sample
-      sampleName={sampleText}
-    />
-  )
-})
 
+```javascript
+import * as React from "react";
+import { storiesOf } from "@storybook/react";
+import { withKnobs, text } from "@storybook/addon-knobs/react";
+import Sample from "../";
+const SampleStory = storiesOf("Sample", module);
+SampleStory.addDecorator(withKnobs);
+SampleStory.add("default", () => {
+  const sampleText = text("Label", "Hello Airsquire");
+  return <Sample sampleName={sampleText} />;
+});
 ```
 
 #### Attention
 
-Use `npm run storybook`, you will find an error as `ReferenceError: exports is not defined`. This will happen in  "storybook": "^1.0.0" with webpack "2.0 +". The issue is open discussed in [github issue list](https://github.com/storybooks/storybook/issues/1819). The resolution is to add a `.babelrc` file to set module usage as below.
+Use `npm run storybook`, you will find an error as `ReferenceError: exports is not defined`. This will happen in "storybook": "^1.0.0" with webpack "2.0 +". The issue is open discussed in [github issue list](https://github.com/storybooks/storybook/issues/1819). The resolution is to add a `.babelrc` file to set module usage as below.
 
 ![Exports is not defined](https://youyue123.github.io/img/error_storybook.png)
 
 **.babelrc**
+
 ```json
 {
-    "presets": [ ["env", {"modules": false} ]]
+  "presets": [["env", { "modules": false }]]
 }
 ```
+
 Then re-run `npm run storybook`, you will see something as below and open the link you can interact with your component
+
 ```bash
 info @storybook/react v3.3.13
 info
@@ -327,12 +342,15 @@ Then you can view and interact your component through the url like [this example
 ## Step 4 - Publish component in NPM
 
 ### Start from NPM documentation
+
 First you need to follow register an account and acquire the login session in your environment. PS: [NPM publish documentation](https://docs.npmjs.com/getting-started/publishing-npm-packages)
 
 ### Add configuration
+
 Then add repositry and prepare script into your `package.json`. This will ensure your git repo will show in NPM and your library is up-to-date.
 
 **package.json**
+
 ```json
 {
   "script": {
@@ -357,7 +375,7 @@ Then you can found your package in NPM and it will be linked to your github repo
 
 Because we are using Typescript for both of development and test case, it is quite straightfoward to use TSLint. PS: [TSLint documentation](https://palantir.github.io/tslint/)
 
-First add dependencies for linting Typescript with react 
+First add dependencies for linting Typescript with react
 
 ```bash
 yarn add tslint tslint-react --dev
@@ -366,21 +384,23 @@ yarn add tslint tslint-react --dev
 Then add `tslint.json` as below
 
 **tslint.json**
+
 ```json
 {
-    "extends": [ "tslint:latest", "tslint-react" ],
-    "rules": {
-        "trailing-comma": false,
-        "semicolon": false,
-        "member-access": false,
-        "no-implicit-dependencies": [true, "dev"]
-    }
+  "extends": ["tslint:latest", "tslint-react"],
+  "rules": {
+    "trailing-comma": false,
+    "semicolon": false,
+    "member-access": false,
+    "no-implicit-dependencies": [true, "dev"]
+  }
 }
 ```
 
 Then modify `package.json` to add lint script
 
 **package.json**
+
 ```json
 {
     ...
@@ -400,9 +420,10 @@ For CI/CD tool we are using [Travis CI](https://travis-ci.org/) for our open sou
 
 First following Travis CI documentation to link your github repo.
 
-Then add `.travis.yml` to your project 
+Then add `.travis.yml` to your project
 
 **.travis.yml**
+
 ```yaml
 language: node_js
 
@@ -410,13 +431,13 @@ sudo: false
 
 notifications:
   email:
-  - youyue@airsquire.co
+    - youyue@airsquire.co
 
 node_js:
-- 8.0.0
+  - 8.0.0
 
 before_install:
-- |
+  - |
     if ! git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '(\.md$)|(^(docs|examples))/'
     then
       echo "Only docs were updated, stopping build process."
@@ -436,7 +457,7 @@ In order to manage test coverage report we are using [codecov](https://codecov.i
 
 First following its documentation to link your Github repo.
 
-Then we need to add dependencies 
+Then we need to add dependencies
 
 ```
 yarn add codecov --dev
@@ -445,6 +466,7 @@ yarn add codecov --dev
 And then we need to modify our test script in `package.json`. In this way, while it is during the CI period, the code coverage report will also be generated.
 
 **package.json**
+
 ```json
 {
     ...
@@ -461,12 +483,11 @@ Then push your update to Github, it will update the codecoverage as below.
 
 ![CodeCov](https://youyue123.github.io/img/codecov_storybook.png)
 
-### Badge 
+### Badge
 
 After running code coverage and CI/CD building job, we want to have a single place to have up-to-date information. We add them as badges to our github repo ReadMe.
 
 The feature is supported by [Shields.io](https://shields.io/)
 
 Sample is as
-[![NPM version](http://img.shields.io/npm/v/react-typescript-npm-storybook-boilerplate.svg?style=flat-square)]((https://www.npmjs.com/package/react-typescript-npm-storybook-boilerplate)) [![codecov](https://codecov.io/gh/AirSquire/react-typescript-npm-storybook-boilerplate/branch/master/graph/badge.svg?style=flat-square)](https://codecov.io/gh/Airsquire/react-typescript-npm-storybook-boilerplate) [![npm](https://img.shields.io/npm/dm/react-typescript-npm-storybook-boilerplate.svg?style=flat-square)](https://www.npmjs.com/package/react-typescript-npm-storybook-boilerplate) [![Build Status](https://travis-ci.org/Airsquire/react-typescript-npm-storybook-boilerplate.svg?style=flat-square&branch=master)](https://travis-ci.org/Airsquire/react-typescript-npm-storybook-boilerplate)
-
+[![NPM version](http://img.shields.io/npm/v/react-typescript-npm-storybook-boilerplate.svg?style=flat-square)](<(https://www.npmjs.com/package/react-typescript-npm-storybook-boilerplate)>) [![codecov](https://codecov.io/gh/AirSquire/react-typescript-npm-storybook-boilerplate/branch/master/graph/badge.svg?style=flat-square)](https://codecov.io/gh/Airsquire/react-typescript-npm-storybook-boilerplate) [![npm](https://img.shields.io/npm/dm/react-typescript-npm-storybook-boilerplate.svg?style=flat-square)](https://www.npmjs.com/package/react-typescript-npm-storybook-boilerplate) [![Build Status](https://travis-ci.org/Airsquire/react-typescript-npm-storybook-boilerplate.svg?style=flat-square&branch=master)](https://travis-ci.org/Airsquire/react-typescript-npm-storybook-boilerplate)

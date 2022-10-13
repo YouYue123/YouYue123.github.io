@@ -150,7 +150,7 @@ author_blurb_image: "/img/avatar.jpg"
 social:
   - title: "github"
     url: "https://github.com/YouYue123"
-  - title: "github"
+  - title: "stackoverflow"
     url: "https://stackoverflow.com/users/9053019/yue-you"
   - title: "linkedin"
     url: "https://www.linkedin.com/in/yue-you-797807b0?trk=hp-identity-photo"
@@ -194,6 +194,8 @@ paginate_path: "blog/page:num/"
 
 sass:
   style: compressed
+
+plugins: [jekyll-paginate]
 
 gems:
   - jekyll-paginate
