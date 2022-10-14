@@ -137,4 +137,42 @@ From the above analysis, I decided to go for Github acions mainly for security, 
 
 ### Tutorial (How to build a github action to reflect code coverage in pull request comments)
 
-Then let's talk about how to make it working.
+As my personal preference I choosed [Typescript action](https://github.com/actions/typescript-action) as base.
+
+There is a special thing for typescript, it will take two steps to compile to the final deliverables for Github actions to run.
+
+```
+typescript source (tsc transpile)--> javascript source (ncc packaging)---> bundled javascript with all moduels in single file
+```
+
+#### Goal
+
+- Fast
+- Overall coverage as summary
+- Changed file coverage as detail
+- Create comment on pull request
+- Update comment when update applies to pull request
+
+#### Implementation key points
+
+The actual implementation is pretty straightforward. It is mostly based on the native github libraries.
+
+- [@actions/core](https://www.npmjs.com/package/@actions/core)
+
+  1. To get input from environment
+  2. To output logs
+
+- [@actions/exec](https://www.npmjs.com/package/@actions/exec)
+
+  1. To install lcov
+  2. To run lcov command to generate summary and detail
+
+- [@actions/github](https://www.npmjs.com/package/@actions/github)
+  1. To verify github event type
+  2. To get the changed file list for this pull request
+  3. To create comment when there is not coverage comment yet
+  4. To update comment when there is existing coverage comment
+
+#### Caveat
+
+The shown implementation will be only working for Debian GNU/Linux due to the usage of apt-get.
