@@ -11,9 +11,9 @@ tags: []
 This article will talk about the following items in sequence
 
 1. Why code coverage is important
-2. How to use flutter code coverage with VS Code.
+2. Flutter code coverage with VS Code
 3. CI/CD integration
-4. How to reflect the code coverage in pull request comments by using github action
+4. Code coverage with github action
 
 ### Why code coverage is important
 
@@ -68,7 +68,7 @@ Good articles to share
 
 [The importance of Code coverage](https://blog.cloudboost.io/the-importance-of-code-coverage-9b4d513f39b4)
 
-### Tutorial (How to use flutter code coverage with VS Code)
+### Flutter code coverage with VS Code
 
 Flutter provides an efficient and out-of-box testkit. People don't need to fight for their favourite framework like the javascript world(Jest vs Jasmine).
 
@@ -135,7 +135,7 @@ https://github.com/dart-lang/coverage/issues/141
 
 From the above analysis, I decided to go for Github acions mainly for security, customization and synthesis to our existing CI/CD workflows in Github.
 
-### Tutorial (How to build a github action to reflect code coverage in pull request comments)
+### Code coverage with github action
 
 As my personal preference I choosed [Typescript action](https://github.com/actions/typescript-action) as base.
 
